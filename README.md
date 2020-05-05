@@ -45,4 +45,4 @@ Enable action debugging
 
 Outputs
 -------
-All non-sensitive data defined in your remote-state-file
+All non-sensitive data defined in your shared_state_key
