@@ -12,7 +12,7 @@ For example, if your define the following `action.yaml`:
   - name: My Deployment
     uses: aplaceformom/terraform-shared-state-action@master
     with:
-      remote_state_file: apfm-terraform-remotestate
+      remote_state_bucket: apfm-terraform-remotestate
       remote_lock_table: terraform-statelock
       shared_state_key: /shared-infra/remotestate.file
 ```
@@ -20,7 +20,7 @@ For example, if your define the following `action.yaml`:
 Inputs
 ------
 
-### remote_state_file
+### remote_state_bucket
 S3 bucket containing Terraform Remote State data (read-write)
 - required: true
 
