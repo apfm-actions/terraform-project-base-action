@@ -1,0 +1,9 @@
+name: terraform-shared-state-action
+description: Make Terraform Remote State data available as action outputs
+inputs:
+  shared_state_file:
+    description: S3 bucket containing Terraform Remote State data (read-only)
+  shared_state_key:
+    description: S3 key containing Terraform Remote State data (read-only)
+  workspace:
+    description: Terraform Workspace to operate from
