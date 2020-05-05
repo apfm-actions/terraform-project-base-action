@@ -4,7 +4,7 @@ data "terraform_remote_state" "shared_infra" {
   backend   = "s3"
 
   config = {
-    bucket = var.shared_state_file
+    bucket = var.remote_state_file
     key    = var.shared_state_key
   }
 }

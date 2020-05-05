@@ -1,9 +1,15 @@
 name: terraform-shared-state-action
 description: Make Terraform Remote State data available as action outputs
 inputs:
-  shared_state_file:
-    description: S3 bucket containing Terraform Remote State data (read-only)
+  remote_state_file:
+    descripton: S3 bucket containing this projects remote state data (read-write)
+    required: true
+  remote_lock_table:
+    description: DynamoDB Table for managing Terraform Locks
+    required: true
   shared_state_key:
-    description: S3 key containing Terraform Remote State data (read-only)
+    description: S3 key containing Terraform Shared State data to read from (read-only)
+    required: true
   workspace:
     description: Terraform Workspace to operate from
+    required: true

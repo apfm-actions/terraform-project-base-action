@@ -12,24 +12,36 @@ For example, if your define the following `action.yaml`:
   - name: My Deployment
     uses: aplaceformom/terraform-shared-state-action@master
     with:
-      shared_state_file: my-remote-state
-      shared_state_key: /path/to/my/remote/state/key
+      remote_state_file: apfm-terraform-remotestate
+      remote_lock_table: terraform-statelock
+      shared_state_key: /shared-infra/remotestate.file
 ```
 
 Inputs
 ------
 
-### shared_state_file
-S3 bucket containing Terraform Remote State data (read-only)
+### remote_state_file
+S3 bucket containing Terraform Remote State data (read-write)
+- required: true
+
+### remote_lock_table
+DynamoDB Table for syncronizing access to the Terraform Remote State file.
 - required: true
 
 ### shared_state_key
-S3 key containing Terraform Remote State data (read-only)
+S3 key containing the Terraform data to be shared between projects (read-only).
+This a read-only end-point supplied by your administrators (techops) for
+tracking information about your infrastructure.
 - required: true
 
 ### workspace
 Terraform Workspace/AWS Account/Environment to query.
 - required: true
+
+### debug
+Enable action debugging
+- reqired: false
+- default: false
 
 Outputs
 -------
