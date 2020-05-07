@@ -25,3 +25,16 @@ output "subnet_id" {
 output "dns_zone_id" {
   value = data.terraform_remote_state.shared_infra.outputs.dns_zone_id
 }
+
+data "aws_caller_identity" "current" {}
+output "account" {
+  value = {
+    id = data.aws_caller_identity.current.account_id
+  }
+}
+output "user" {
+  value = {
+    id  = data.aws_caller_identity.current.user_id
+    arn = data.aws_caller_identity.current.arn
+  }
+}
