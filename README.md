@@ -47,6 +47,8 @@ Outputs
 -------
 All non-sensitive data defined in your shared_state_key
 
+- account_root_id
+- account_id
 - cluster_azs
 - cluster_cluster_name
 - cluster_ecr_repo
@@ -63,6 +65,7 @@ All non-sensitive data defined in your shared_state_key
 - dns_zone_id_private
 - dns_zone_id_public
 - dns_zone_id_service
+- external_id
 - network_azs
 - network_cidr_block
 - network_dns_delegation_id
@@ -95,3 +98,5 @@ All non-sensitive data defined in your shared_state_key
 - sns_notifications
 - subnet_id_private
 - subnet_id_public
+- user_id
+- user_arn
