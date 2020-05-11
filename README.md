@@ -45,7 +45,9 @@ Enable action debugging
 
 Outputs
 -------
-All non-sensitive data defined in your shared_state_key
+All non-sensitive data defined in your shared_state_key.  In addition to the
+list of outputs below, this action _also_ sets all outputs as environment
+variables prefixed with TF_VAR. E.g. `TF_VAR_account_id`.
 
 - account_root_id
 - account_id
