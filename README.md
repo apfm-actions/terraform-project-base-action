@@ -17,8 +17,8 @@ For example, if your define the following `action.yaml`:
       project: examples
       owner: MyTeam
       email: myteam@mydomain.org
-      remote_state_bucket: apfm-terraform-remotestate
-      remote_lock_table: terraform-statelock
+      shared_state_bucket: apfm-terraform-remotestate
+      shared_lock_table: terraform-statelock
       shared_state_key: terraform/apfm.tfstate
 ```
 
@@ -42,12 +42,8 @@ Project owner/team. E.g. myteam
 Project owner/team email address. E.g. myteam@mycompany.com
 - required: true
 
-### remote_state_bucket
-S3 bucket containing Terraform Remote State data (read-write)
-- required: true
-
-### remote_lock_table
-DynamoDB Table for syncronizing access to the Terraform Remote State file.
+### shared_state_bucket
+S3 bucket containing Terraform Remote State data (read-only)
 - required: true
 
 ### shared_state_key
