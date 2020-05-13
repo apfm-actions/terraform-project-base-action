@@ -22,3 +22,7 @@ inputs:
   workspace:
     description: Terraform Workspace to operate from
     required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
