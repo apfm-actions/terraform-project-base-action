@@ -1,16 +1,18 @@
-APFM Shared Infrastructure
-==========================
-This action supplies the workflow with information about the AWS shared
-infrastructure used by APFM. Since this information is sensitive, this action
-must be added to a workflow as a git-submodule w/in the `.github/actions` path.
+APFM Project Action
+===================
+This action begins the component workflow for a APFM project.
+This includes creation of the component S3 state bucket used to Terraform
+remote state, initializing Terraform workspaces, and making available shared
+data via a shared remote state path and in some cases service discovery via
+standardized tagging within the infrastructure.
 
 Usage
 -----
 
 For example, if your define the following `action.yaml`:
 ```yaml
-  - name: My Deployment
-    uses: aplaceformom/terraform-shared-state-action@master
+  - name: My project
+    uses: aplaceformom/terraform-project-base-action@master
     with:
       project: examples
       owner: MyTeam
@@ -22,6 +24,23 @@ For example, if your define the following `action.yaml`:
 
 Inputs
 ------
+
+### workspace
+Terraform Workspace/AWS Account/Environment to query. E.g. dev, qa, stage, prod
+- required: true
+
+
+### project
+Project this service is member of. E.g. phoenix
+- required: true
+
+### owner
+Project owner/team. E.g. myteam
+- required: true
+
+### email
+Project owner/team email address. E.g. myteam@mycompany.com
+- required: true
 
 ### remote_state_bucket
 S3 bucket containing Terraform Remote State data (read-write)
@@ -35,10 +54,6 @@ DynamoDB Table for syncronizing access to the Terraform Remote State file.
 S3 key containing the Terraform data to be shared between projects (read-only).
 This a read-only end-point supplied by your administrators (techops) for
 tracking information about your infrastructure.
-- required: true
-
-### workspace
-Terraform Workspace/AWS Account/Environment to query.
 - required: true
 
 ### debug
