@@ -19,7 +19,7 @@ For example, if your define the following `action.yaml`:
       email: myteam@mydomain.org
       remote_state_bucket: apfm-terraform-remotestate
       remote_lock_table: terraform-statelock
-      shared_state_key: /shared-infra/remotestate.file
+      shared_state_key: terraform/apfm.tfstate
 ```
 
 Inputs
