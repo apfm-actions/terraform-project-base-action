@@ -1,7 +1,7 @@
 name: terraform-shared-state-action
 description: Make Terraform Remote State data available as action outputs
 inputs:
-  remote_state_file:
+  remote_state_bucket:
     descripton: S3 bucket containing this projects remote state data (read-write)
     required: true
   remote_lock_table:
