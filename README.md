@@ -12,6 +12,9 @@ For example, if your define the following `action.yaml`:
   - name: My Deployment
     uses: aplaceformom/terraform-shared-state-action@master
     with:
+      project: examples
+      owner: MyTeam
+      email: myteam@mydomain.org
       remote_state_bucket: apfm-terraform-remotestate
       remote_lock_table: terraform-statelock
       shared_state_key: /shared-infra/remotestate.file
