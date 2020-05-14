@@ -14,10 +14,6 @@ variable "remote_state_bucket" {
   type = string
 }
 
-variable "remote_state_table" {
-  type = string
-}
-
 variable "remote_lock_table" {
   type = string
 }
