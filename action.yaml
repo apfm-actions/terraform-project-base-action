@@ -10,8 +10,11 @@ inputs:
   email:
     description: Project owner/team email address
     required: true
-  shared_state_bucket:
-    descripton: S3 bucket containing this projects remote state data (read-only)
+  remote_state_bucket:
+    descripton: S3 bucket containing this projects remote state data (read-write)
+    required: true
+  remote_lock_table:
+    description: DynamoDB Table for managing Terraform Locks
     required: true
   shared_state_key:
     description: S3 key containing Terraform Shared State data to read from (read-only)
