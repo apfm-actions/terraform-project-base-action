@@ -10,6 +10,10 @@ variable "email" {
   type = string
 }
 
+variable "region" {
+  type = string
+}
+
 variable "remote_state_bucket" {
   type = string
 }
