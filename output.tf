@@ -51,3 +51,11 @@ output "external" {
     id = data.aws_ssm_parameter.external_id.value
   }
 }
+
+output "project" {
+  value = {
+    name  = var.project
+    owner = var.owner
+    email = var.email
+  }
+}

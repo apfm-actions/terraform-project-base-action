@@ -54,6 +54,9 @@ outputs:
   - network_public_subnets
   - network_region
   - network_vpc_id
+  - project_name
+  - project_owner
+  - project_email
   - route_table_id_private
   - route_table_id_public
   - setting_admin
