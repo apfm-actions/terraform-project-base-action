@@ -22,6 +22,9 @@ inputs:
   workspace:
     description: Terraform Workspace to operate from
     required: true
+  debug:
+    description: Enable action debugging
+    default: false
 
 outputs:
   - account_root_id
