@@ -20,7 +20,7 @@ inputs:
     description: S3 key containing Terraform Shared State data to read from (read-only)
     required: true
   workspace:
-    description: Terraform Workspace to operate from
+    description: Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace
     required: true
   debug:
     description: Enable action debugging

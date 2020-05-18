@@ -26,7 +26,9 @@ Inputs
 ------
 
 ### workspace
-Terraform Workspace/AWS Account/Environment to query. E.g. dev, qa, stage, prod
+Terraform Workspace/AWS Account/Environment to query (e.g. dev, qa, stage,
+prod). In terraform this will be accessible as `terraform.workspace` instead of
+`var.workspace`.
 - required: true
 
 
