@@ -22,6 +22,9 @@ inputs:
   workspace:
     description: Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace
     required: true
+  plan:
+    description: Skip the Terraform Plan portion of the build
+    default: true
   debug:
     description: Enable action debugging
     default: false
