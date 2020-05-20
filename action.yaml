@@ -10,6 +10,15 @@ inputs:
   email:
     description: Project owner/team email address
     required: true
+  dev:
+    description: Git branch pattern to deploy to dev environment
+    default: 'develop'
+  stage:
+    description: Git branch pattern to deploy to stage environment
+    default: 'master'
+  prod:
+    description: Git branch pattern to deploy to prod environment
+    default: 'tag'
   remote_state_bucket:
     descripton: S3 bucket containing this projects remote state data (read-write)
     required: true

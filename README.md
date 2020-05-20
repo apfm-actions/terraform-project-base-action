@@ -48,6 +48,18 @@ Project owner/team. E.g. myteam
 Project owner/team email address. E.g. myteam@mycompany.com
 - required: true
 
+### dev
+Git branch pattern to deploy to dev environment
+- default: 'develop'
+
+### stage
+Git branch pattern to deploy to stage environment
+- default: 'master'
+
+### prod
+Git branch pattern to deploy to prod environment
+- default: 'tag'
+
 ### remote_state_bucket
 S3 bucket containing Terraform Remote State data (read-write)
 - required: true
