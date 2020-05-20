@@ -8,7 +8,6 @@ tagging within the infrastructure.
 
 See also:
  - https://help.github.com/en/actions
- - https://github.com/apfm-actions/terraform-project-base-action
 
 Usage
 -----
