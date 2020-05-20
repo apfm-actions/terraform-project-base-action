@@ -1,10 +1,14 @@
 APFM Project Action
 ===================
-This action begins the component workflow for a APFM project.
-This includes creation of the component S3 state bucket used to Terraform
-remote state, initializing Terraform workspaces, and making available shared
-data via a shared remote state path and in some cases service discovery via
-standardized tagging within the infrastructure.
+This [GitHub Action][] begins the component workflow for a APFM project.  This
+includes creation of the component S3 state bucket used to Terraform remote
+state, initializing Terraform workspaces, and making available shared data via
+a shared remote state path and in some cases service discovery via standardized
+tagging within the infrastructure.
+
+See also:
+ - https://help.github.com/en/actions
+ - https://github.com/apfm-actions/terraform-project-base-action
 
 Usage
 -----
@@ -122,3 +126,12 @@ variables prefixed with TF_VAR. E.g. `TF_VAR_account_id`.
 - subnet_id_public
 - user_id
 - user_arn
+
+[//]: # (The following are reference links used elsewhere in the document)
+
+[Git]: https://git-scm.com/
+[GitHub]: https://www.github.com
+[GitHub Actions]: https://help.github.com/en/actions
+[Terraform]: https://www.terraform.io/
+[Docker]: https://www.docker.com
+[Dockerfile]: https://docs.docker.com/engine/reference/builder/
