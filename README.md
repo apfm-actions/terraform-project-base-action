@@ -21,6 +21,7 @@ For example, if your define the following `action.yaml`:
       project: examples
       owner: MyTeam
       email: myteam@mydomain.org
+      tf_assume_role: TerraformApply
       remote_state_bucket: apfm-terraform-remotestate
       remote_lock_table: terraform-statelock
       shared_state_key: terraform/apfm.tfstate
@@ -56,6 +57,11 @@ Git branch pattern to deploy to stage environment
 ### prod
 Git branch pattern to deploy to prod environment
 - default: 'tag'
+
+### tf_assume_role
+Specify role that later actions should assume. Only actions designed to work
+with terraform-project-base will assume this role.
+- default: unset
 
 ### remote_state_bucket
 S3 bucket containing Terraform Remote State data (read-write)

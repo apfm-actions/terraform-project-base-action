@@ -22,6 +22,8 @@ inputs:
   workspace:
     description: Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace. By default the git branch pattern will decide which workspace to use.
     required: false
+  tf_assume_role:
+    description: Specify role that later actions should assume. Only actions designed to work with terraform-project-base will assume this role.
   remote_state_bucket:
     descripton: S3 bucket containing this projects remote state data (read-write)
     required: true
