@@ -30,11 +30,8 @@ Inputs
 ------
 
 ### workspace
-Terraform Workspace/AWS Account/Environment to query (e.g. dev, qa, stage,
-prod). In terraform this will be accessible as `terraform.workspace` instead of
-`var.workspace`.
-- required: true
-
+Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace. By default the git branch pattern will decide which workspace to use.
+- required: false
 
 ### project
 Project this service is member of. E.g. phoenix

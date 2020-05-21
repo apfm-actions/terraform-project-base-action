@@ -19,6 +19,9 @@ inputs:
   prod:
     description: Git branch pattern to deploy to prod environment
     default: 'tag'
+  workspace:
+    description: Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace. By default the git branch pattern will decide which workspace to use.
+    required: false
   remote_state_bucket:
     descripton: S3 bucket containing this projects remote state data (read-write)
     required: true
@@ -27,9 +30,6 @@ inputs:
     required: true
   shared_state_key:
     description: S3 key containing Terraform Shared State data to read from (read-only)
-    required: true
-  workspace:
-    description: Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace
     required: true
   plan:
     description: Skip the Terraform Plan portion of the build
