@@ -1,102 +1,158 @@
 name: terraform-project-base-action
-description: Begin a terraform project component
+description: 'Begin a terraform project component'
 inputs:
   project:
-    description: Project name this resource is part of
+    description: 'Project name this resource is part of'
     required: true
   owner:
-    description: Project owner/team
+    description: 'Project owner/team'
     required: true
   email:
-    description: Project owner/team email address
+    description: 'Project owner/team email address'
     required: true
   dev:
-    description: Git branch pattern to deploy to dev environment
+    description: 'Git branch pattern to deploy to dev environment'
     default: 'develop'
   stage:
-    description: Git branch pattern to deploy to stage environment
+    description: 'Git branch pattern to deploy to stage environment'
     default: 'master'
   prod:
-    description: Git branch pattern to deploy to prod environment
+    description: 'Git branch pattern to deploy to prod environment'
     default: 'tag'
   workspace:
-    description: Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace. By default the git branch pattern will decide which workspace to use.
+    description: 'Terraform Workspace to operate from.  In terraform this is accessible as terraform.workspace. By default the git branch pattern will decide which workspace to use.'
     required: false
   tf_assume_role:
-    description: Specify role that later actions should assume. Only actions designed to work with terraform-project-base will assume this role.
+    description: 'Specify role that later actions should assume. Only actions designed to work with terraform-project-base will assume this role.'
   remote_state_bucket:
-    descripton: S3 bucket containing this projects remote state data (read-write)
+    description: 'S3 bucket containing this projects remote state data (read-write)'
     required: true
   remote_lock_table:
-    description: DynamoDB Table for managing Terraform Locks
+    description: 'DynamoDB Table for managing Terraform Locks'
     required: true
   shared_state_key:
-    description: S3 key containing Terraform Shared State data to read from (read-only)
+    description: 'S3 key containing Terraform Shared State data to read from (read-only)'
     required: true
   plan:
-    description: Skip the Terraform Plan portion of the build
+    description: 'Skip the Terraform Plan portion of the build'
     default: true
   debug:
-    description: Enable action debugging
+    description: 'Enable action debugging'
     default: false
 
 outputs:
-  - account_root_id
-  - account_id
-  - cluster_azs
-  - cluster_cluster_name
-  - cluster_ecr_repo
-  - cluster_elk_endpoint
-  - cluster_execution_role
-  - cluster_execution_role_arn
-  - cluster_id
-  - cluster_private_subnets
-  - cluster_public_subnets
-  - cluster_region
-  - cluster_security_groups
-  - cluster_service_namespace_id
-  - cluster_vpc_id
-  - dns_zone_id_private
-  - dns_zone_id_public
-  - dns_zone_id_service
-  - external_id
-  - network_azs
-  - network_cidr_block
-  - network_dns_delegation_id
-  - network_igw_id
-  - network_power_user_role_arn
-  - network_private_route_tbl
-  - network_private_subnets
-  - network_public_route_tbl
-  - network_public_subnets
-  - network_region
-  - network_vpc_id
-  - project_name
-  - project_owner
-  - project_email
-  - route_table_id_private
-  - route_table_id_public
-  - setting_admin
-  - setting_admin_email
-  - setting_admin_key
-  - setting_admin_key_name
-  - setting_domain_name
-  - setting_elkendpoint
-  - setting_enable_couchdb
-  - setting_enable_finance-cst
-  - setting_enable_sa_eks
-  - setting_enable_vpc_flow_logs
-  - setting_enable_vpn_gateway
-  - setting_enable_wptest
-  - setting_s3_remotestate_bucket_id
-  - setting_sa_eks_enable
-  - setting_subnet_prefix
-  - sns_alerts
-  - sns_notifications
-  - subnet_id_private
-  - subnet_id_public
-  - user_id
-  - user_arn
+  account_root_id:
+    description: 'AWS apfm-root account ID'
+  account_id:
+    description: 'Current AWS account ID'
+  cluster_azs:
+    description: 'ECS Cluster availability zone'
+  cluster_cluster_name:
+    description: 'ECS Cluster name'
+  cluster_ecr_repo:
+    description: 'Default ECR repo to use when launching containers in this cluster'
+  cluster_elk_endpoint:
+    description: 'ELK endpoint which collects logs for this cluster [deprecated]'
+  cluster_execution_role:
+    description: 'Default exec role name used when provisioning containers in this cluster'
+  cluster_execution_role_arn:
+    description: 'Default exec role ARN used when provisioning containers in this cluster'
+  cluster_id:
+    description: 'ECS Cluster id (same as name)'
+  cluster_private_subnets:
+    description: 'Default private subnets to use when launching containers in this cluster'
+  cluster_public_subnets:
+    description: 'Default public subnets to use when launching containers in this cluster'
+  cluster_region:
+    description: 'Region this cluster is deployed in [deprecated]'
+  cluster_security_groups:
+    description: 'Default security groups to use when launching containers in this cluster'
+  cluster_service_namespace_id:
+    description: 'AWS Service Discovery namespace ID for containers in this cluster'
+  cluster_vpc_id:
+    description: 'Default VPC to use when launching containers in this cluster'
+  dns_zone_id_private:
+    description: 'Default private DNS zone id to use when launching containers in this cluster'
+  dns_zone_id_public:
+    description: 'Default public DNS zone id to use when launching containers in this cluster'
+  dns_zone_id_service:
+    description: 'Default service discovery DNS zone id to use when launching containers in this cluster'
+  external_id:
+    description: 'AWS external id to use when assuming roles into this account'
+  network_azs:
+    description: 'Network availability zones [deprecated: same as cluster_azs]'
+  network_cidr_block:
+    description: 'Network CIDR block [deprecated]'
+  network_dns_delegation_id:
+    description: 'DNS delegation set id [deprecated]'
+  network_igw_id:
+    description: 'Network internet gateway id [deprecated]'
+  network_power_user_role_arn:
+    description: 'Power user role ARN [deprecated]'
+  network_private_route_tbl:
+    description: 'Private route table [deprecated]'
+  network_private_subnets:
+    description: 'Private subnets [deprecated]'
+  network_public_route_tbl:
+    description: 'Public route table [deprecated]'
+  network_public_subnets:
+    description: 'Public subnets [deprecated]'
+  network_region:
+    description: 'Network region [deprecated]'
+  network_vpc_id:
+    description: 'Network VPC ID [deprectated]'
+  project_name:
+    description: 'Project Name'
+  project_owner:
+    description: 'Project Owner'
+  project_email:
+    description: 'Project Email Address'
+  route_table_id_private:
+    description: 'Private route table id [deprecated]'
+  route_table_id_public:
+    description: 'Public route table id [deprecated]'
+  setting_admin:
+    description: 'Administrator name'
+  setting_admin_email:
+    description: 'Administrator email'
+  setting_admin_key:
+    description: 'Administrator public key'
+  setting_admin_key_name:
+    description: 'Administrator public key name'
+  setting_domain_name:
+    description: 'Top Level Domain Name for account'
+  setting_elkendpoint:
+    description: 'ELK Endpoint [deprecated]'
+  setting_enable_couchdb:
+    description: 'CouchDB Enabled [deprecated]'
+  setting_enable_finance-cst:
+    description: 'Finance CST enabled [deprecated]'
+  setting_enable_sa_eks:
+    description: 'SA EKS enabled [deprecated]'
+  setting_enable_vpc_flow_logs:
+    description: 'VPC Vlowlogs enabled [deprecated]'
+  setting_enable_vpn_gateway:
+    description: 'VPN Gateway enabled [deprecated]'
+  setting_enable_wptest:
+    description: 'WebPageSpeedTest enabled [deprecated]'
+  setting_s3_remotestate_bucket_id:
+    description: 'Terraform S3 remotestate bucket id]'
+  setting_sa_eks_enable:
+    description: 'SA EKS enabled [deprecated]'
+  setting_subnet_prefix:
+    description: 'Subnet prefix [deprecated]'
+  sns_alerts:
+    description: 'SNS alerts topic name [deprecated]'
+  sns_notifications:
+    description: 'SNS notifications topic name [deprecated]'
+  subnet_id_private:
+    description: 'Private subnet ID [deprecated]'
+  subnet_id_public:
+    description: 'Public subnet id [deprecated]'
+  user_id:
+    description: 'Current AWS user ID'
+  user_arn:
+    description: 'Current AWS user arn'
 
 runs:
   using: 'docker'
