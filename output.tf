@@ -1,51 +1,50 @@
 output "sns" {
-  value = data.terraform_remote_state.shared_infra.outputs.sns
+  value = local.sns
 }
 
 output "setting" {
-  value = data.terraform_remote_state.shared_infra.outputs.setting
+  value = local.setting
 }
 
 output "network" {
-  value = data.terraform_remote_state.shared_infra.outputs.network
+  value = local.network
 }
 
 output "cluster" {
-  value = data.terraform_remote_state.shared_infra.outputs.cluster
+  value = local.cluster
 }
 
 output "route_table_id" {
-  value = data.terraform_remote_state.shared_infra.outputs.route_table_id
+  value = {
+    private = local.network["private_route_tbl"]
+    public  = local.network["public_route_tbl"]
+  }
 }
 
 output "subnet_id" {
-  value = data.terraform_remote_state.shared_infra.outputs.subnet_id
+  value = {
+    private = local.network["private_subnets"]
+    public  = local.network["public_subnets"]
+  }
 }
 
 output "dns_zone_id" {
-  value = data.terraform_remote_state.shared_infra.outputs.dns_zone_id
+  value = local.dns
 }
 
-data "aws_caller_identity" "root" {}
-data "aws_ssm_parameter" "account_id" {
-  name = "/terraform/${terraform.workspace}/account_id"
-}
 output "account" {
   value = {
-    root_id = data.aws_caller_identity.root.account_id
+    root_id = data.aws_caller_identity.current.account_id
     id = data.aws_ssm_parameter.account_id.value
   }
 }
 output "user" {
   value = {
-    id  = data.aws_caller_identity.root.user_id
-    arn = data.aws_caller_identity.root.arn
+    id  = data.aws_caller_identity.current.user_id
+    arn = data.aws_caller_identity.current.arn
   }
 }
 
-data "aws_ssm_parameter" "external_id" {
-  name = "/terraform/${terraform.workspace}/external_id"
-}
 output "external" {
   value = {
     id = data.aws_ssm_parameter.external_id.value
